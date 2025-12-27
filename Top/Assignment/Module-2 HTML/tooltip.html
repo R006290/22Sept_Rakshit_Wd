@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tooltip Example</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            padding: 40px;
+            background-color: #fc0202;
+        }
+
+        .tooltip-container{
+            position: relative;      /* parent is relative */
+            display: inline-block;
+        }
+
+        .tooltip-text{
+            position: absolute;      /* tooltip is absolute inside the relative parent */
+            background-color: greenyellow;
+            color: blue;
+            padding: 6px 10px;
+            border-radius: 5px;
+            top: -40px;              /* above the button */
+            left: 50%;
+            transform: translateX(-50%);
+            white-space: nowrap;
+            font-size: 14px;
+            opacity: 0;              /* hidden by default */
+            transition: 0.4s;
+            pointer-events: none;
+        }
+
+        .tooltip-container:hover .tooltip-text{
+            opacity: 1;             /* show tooltip on hover */
+        }
+
+        button{
+            padding: 10px 20px;
+            font-size: 16px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h2>Tooltip Example using Relative Position</h2>
+
+    <div class="tooltip-container">
+        <button>Hover Me</button>
+        <div class="tooltip-text">This is a tooltip message!</div>
+    </div>
+
+</body>
+</html>

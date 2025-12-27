@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home Page with Background Image</title>
+
+    <link rel="shortcut icon" href="icon.jpeg" type="image/x-icon">
+
+    <style>
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+
+            background-image: url('bg.jpeg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            height: 100vh;
+        }
+
+        /* Header */
+        header {
+            background-color: rgba(0, 0, 0, 0.6);
+            padding: 10px 20px;
+            color: white;
+            display: flex;
+            align-items: center;
+        }
+
+        header img {
+            height: 50px;
+            margin-right: 15px;
+        }
+
+        /* Navigation */
+        nav {
+            background-color: rgba(0, 0, 0, 0.5);
+            padding: 10px;
+            text-align: center;
+        }
+
+        nav a {
+            color: white;
+            margin: 15px;
+            text-decoration: none;
+            font-size: 18px;
+        }
+
+        /* Content */
+        .container {
+            padding: 40px;
+            text-align: center;
+            color: white;
+        }
+
+        .container h1 {
+            font-size: 40px;
+        }
+
+        /* Footer */
+        footer {
+            background-color: rgba(0, 0, 0, 0.7);
+            color: white;
+            padding: 120px;
+            display: flex;
+            justify-content: space-between; /* Space out left, center, right */
+            align-items: center;
+        }
+
+        footer .left img {
+            height: 50px;
+        }
+
+        footer .center {
+            text-align: center;
+            width: 33%;
+            font-size: 14px;
+        }
+
+        footer .right {
+            text-align: justify;
+            font-size: 16px;
+            line-height: 1.6;
+            width: 33%;
+        }
+
+        footer .left {
+            width: 33%;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <img src="icon.jpeg" alt="Logo">
+        <h1>My Website</h1>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="#">Home</a>
+        <a href="#">About</a>
+        <a href="#">Services</a>
+        <a href="#">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
+    <div class="container">
+        <h1>Welcome to My Home Page</h1>
+        <p>This is a simple homepage with a full background image.</p>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <!-- Left: Logo -->
+        <div class="left">
+            <img src="icon.jpeg" alt="Footer Logo">
+        </div>
+
+        <!-- Center: Copyright -->
+        <div class="center">
+            © 2025 Your Website Name. All Rights Reserved.
+        </div>
+
+        <!-- Right: Contact Details -->
+        <div class="right">
+            <strong>Contact Details:</strong><br>
+            Name: Rakshit Patel<br>
+            Contact: 9099098443 <br>
+            Email: rp0252@gmail.com
+        </div>
+    </footer>
+
+</body>
+</html>

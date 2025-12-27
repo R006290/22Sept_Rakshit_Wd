@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSS Relative Position</title>
+    <style>
+        body{
+            background-color: rgb(9, 255, 0);
+        }
+
+        h1{
+            text-align: center;
+            color: chocolate;
+            font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+        }
+
+        .box{
+            height: 150px;
+            width: 120px;
+            color: aqua;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 10px;
+            font-size: 14px;
+        }
+        
+        .container{
+            margin-top: 40px;
+        }
+
+        .relative-box{
+            background-color: blue;
+            position: relative;
+        }
+    </style>
+</head>
+<body>
+    <h1>CSS Relative Example</h1>
+    <hr>
+
+    <div class="container">
+        <div class="box relative-box">
+            <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Recusandae, corrupti.
+            </p>
+        </div>
+
+    </div>
+</body>
+</html>

@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Demo Home Page — Display & Position (with Submenu)</title>
+  <style>
+    /* ---------- Base ---------- */
+    * { box-sizing: border-box; }
+    body {
+      margin: 0;
+      font-family: Arial, Helvetica, sans-serif;
+      background: url("bg.jpeg");
+      color: #222;
+      line-height: 1.4;
+    }
+
+    /* ---------- HEADER (flex + relative) ---------- */
+    header {
+      display: flex;               /* layout with display */
+      justify-content: space-between;
+      align-items: center;
+      padding: 14px 22px;
+      background: #008efa;
+      color: #fff;
+      position: relative;         /* used so absolute children position relative to header when needed */
+      z-index: 10;
+    }
+
+    .logo {
+      display: inline-block;      /* explicit display */
+      font-weight: 700;
+      font-size: 20px;
+    }
+
+    /* ---------- NAV (inline-flex + submenu using position) ---------- */
+    nav {
+      display: inline-flex;
+      gap: 14px;
+      align-items: center;
+    }
+
+    nav > ul {
+      display: flex;              /* main nav - horizontal */
+      gap: 12px;
+      margin: 0;
+      padding: 0;
+      list-style: none;
+    }
+
+    nav li {
+      position: relative;         /* parent for absolute submenu */
+      display: inline-block;      /* ensure each li is inline-block */
+    }
+
+    nav a {
+      display: inline-block;
+      padding: 8px 12px;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+    }
+
+    nav a:hover, nav a:focus {
+      background: rgb(0, 110, 220);
+    }
+
+    /* ---------- SUBMENU (dropdown) ---------- */
+    .submenu {
+      display: none;              /* hide by default (display controlled) */
+      position: absolute;         /* positioned relative to parent li */
+      top: calc(100% + 6px);      /* appear below the parent */
+      left: 0;
+      min-width: 170px;
+      padding: 8px 0;
+      background: #ffffff;
+      color: #222222;
+      box-shadow: 0 8px 18px rgba(0,0,0,0.12);
+      border-radius: 6px;
+      list-style: none;
+    }
+
+    /* Each submenu item displayed as block */
+    .submenu li {
+      display: block;
+      margin: 0;
+    }
+
+    .submenu a {
+      display: block;             /* each link is block inside submenu */
+      padding: 10px 14px;
+      color: #222;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+
+    .submenu a:hover, .submenu a:focus {
+      background: #f2f6ff;
+    }
+
+    /* Show submenu on hover and focus-within (keyboard accessible) */
+    nav li:hover > .submenu,
+    nav li:focus-within > .submenu {
+      display: block;             /* toggle display to show submenu */
+    }
+
+    /* ---------- HERO (block + absolute overlay) ---------- */
+    .hero {
+        display: block;
+        height: 260px;
+        background: url("background.jpg") center/cover no-repeat;
+        position: relative;
+        margin-top: 40px;
+        overflow: hidden;
+    }
+
+    .hero .overlay {
+      position: absolute;         /* absolute overlay text */
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, -50%);
+      display: inline-block;
+      padding: 22px 28px;
+      border-radius: 10px;
+      text-align: center;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+
+    .hero h1 {font-size: 28px; color: #00d5ff;}
+
+    /* ---------- FEATURES (block + inline-block cards) ---------- */
+    .features {
+      display: block;
+      padding: 34px 18px;
+      text-align: center;
+    }
+
+    .cards {
+      display: inline-block;      /* wrapper is inline-block so it centers with text-align:center */
+      max-width: 1050px;
+      width: 100%;
+      text-align: center;
+    }
+
+    .card-row {
+      display: flex;              /* 1st row: flex to keep cards aligned */
+      gap: 18px;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .card {
+      display: inline-block;      /* explicit display for card */
+      width: 260px;
+      min-height: 130px;
+      background: #bd7500;
+      border-radius: 8px;
+      padding: 16px;
+      box-shadow: 0 6px 14px rgba(19,19,24,0.06);
+      text-align: center;
+    }
+
+    /* ---------- FOOTER (block + relative) ---------- */
+    footer {
+      display: block;
+      padding: 20px;
+      background: #008efa;
+      color: #eee;
+      text-align: center;
+      position: relative;
+      margin-top: 28px;
+    }
+
+    /* ---------- Small responsive tweaks ---------- */
+    @media (max-width: 720px) {
+      nav > ul { gap: 6px; flex-wrap: wrap; justify-content: flex-end; }
+      .hero { height: 260px; }
+      .hero h1 { font-size: 20px; }
+      .card { width: calc(50% - 18px); }
+    }
+
+    @media (max-width: 420px) {
+      .card { width: 100%; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- HEADER -->
+  <header>
+    <div class="logo" tabindex="0">MyWebSite</div>
+
+    <nav aria-label="Main navigation">
+      <ul>
+        <li><a href="#" tabindex="0">Home</a></li>
+
+        <li>
+          <a href="#" aria-haspopup="true" aria-expanded="false" tabindex="0">Services ▾</a>
+          <!-- Submenu (dropdown) -->
+          <ul class="submenu" role="menu" aria-label="Services submenu">
+            <li role="none"><a role="menuitem" href="#">Web Design</a></li>
+            <li role="none"><a role="menuitem" href="#">Development</a></li>
+            <li role="none"><a role="menuitem" href="#">SEO</a></li>
+            <li role="none"><a role="menuitem" href="#">Support</a></li>
+          </ul>
+        </li>
+
+        <li>
+          <a href="#" tabindex="0">About</a>
+        </li>
+
+        <li>
+          <a href="#" tabindex="0">Contact</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+
+  <!-- HERO -->
+  <section class="hero" role="banner">
+    <div class="overlay" role="region" aria-label="Hero message">
+      <h1>Welcome to the CSS Home Page</h1>
+    </div>
+  </section>
+
+  <!-- FEATURES -->
+  <section class="features" aria-label="Features">
+
+    <div class="cards">
+      <div class="card-row">
+        <div class="card">
+          <h3>Details</h3>
+          <p>Lorem ipsum, dolor sit amet consectetur adipisicing elit. Voluptas, nam.</p>
+        </div>
+
+        <div class="card">
+          <h3>Feature</h3>
+          <p>More items</p>
+          <p>Online Payment</p>
+          <p>Track Order</p>
+        </div>
+
+        <div class="card">
+          <h3>Contact</h3>
+          <p>Number: 90990 98443</p>
+          <p>E-mail: rp852@gmail.com</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- FOOTER -->
+  <footer>
+    <div>© <span id="year"></span> MyWebSite — All rights reserved</div>
+  </footer>
+
+  <script>
+    // small JS only to set year (you can remove if you want pure HTML/CSS)
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
+</body>
+</html>
