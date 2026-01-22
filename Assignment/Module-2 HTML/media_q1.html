@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Media Query</title>
+  <style>
+    * { box-sizing: border-box; }
+    body {
+      background-color: aquamarine;
+      margin: 0;
+      padding: 10px;
+      font-family: Arial, Helvetica, sans-serif;
+      color: #111;
+    }
+
+    h1 { text-align: center; margin-top: 6px; }
+
+
+    header {
+      background-color: snow;
+      padding: 12px 16px;
+      color: #111;               
+      border-radius: 8px;
+      margin-bottom: 18px;
+      display: block;
+    }
+    .nav {
+      display: flex;
+      gap: 12px;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+    }
+
+    .nav a {
+      text-decoration: none;
+      padding: 8px 12px;
+      border-radius: 6px;
+      background: transparent;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .nav a:hover {
+      background: rgba(0,0,0,0.06);
+    }
+
+    header img { height: 50px; margin-right: 12px; vertical-align: text-top; }
+
+    .container {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 20px;
+      align-items: stretch;
+    }
+
+    .list {
+      text-align: center;
+      background-color: aqua;
+      border: 2px solid black;
+      border-radius: 10px;
+      font-size: 20px;
+      padding: 20px;
+      box-shadow: 2px 2px 10px gray;
+    }
+
+    @media (max-width: 600px) {
+      .container {
+        grid-template-columns: 1fr;
+    }
+      .nav {
+        justify-content: flex-start;
+        display: grid;
+    }
+    }
+  </style>
+</head>
+<body>
+
+  <h1>Media Queries</h1>
+  <hr>
+
+  <header>
+    <div class="nav">
+      <a href="#">Home</a>
+      <a href="#">About</a>
+      <a href="#">Services</a>
+      <a href="#">Contact</a>
+    </div>
+  </header>
+
+</body>
+</html>

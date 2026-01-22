@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Relative Position Card</title>
+
+    <style>
+        body{
+            font-family: Arial, sans-serif;
+            background-color: #00b7ff;
+            padding: 30px;
+            text-align: center;
+        }
+
+        /* Container for multiple cards */
+        .container{
+            display: flex;
+            gap: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .card{
+            width: 250px;
+            background: rgb(255, 174, 0);
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.2);
+            padding: 20px;
+            position: relative;
+        }
+
+        .card h2{
+            margin-bottom: 10px;
+        }
+
+        .card p{
+            color: #444;
+            font-size: 14px;
+        }
+
+        /* Absolute positioned tag */
+        .tag{
+            position: absolute;
+            top: 10px;
+            right: 10px;
+            background-color: tomato;
+            color: rgb(137, 0, 0);
+            padding: 4px 10px;
+            border-radius: 20px;
+            font-size: 12px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>3 Card Example using Relative Position</h1>
+    <hr>
+
+    <!-- Container -->
+    <div class="container">
+
+        <!-- Card 1 -->
+        <div class="card">
+            <span class="tag">New</span>
+            <h2>Card1</h2>
+            <p>
+                This is the first card using 
+                <b>position: relative</b> with an absolute tag.
+            </p>
+        </div>
+
+        <!-- Card 2 -->
+        <div class="card">
+            <span class="tag">Hot</span>
+            <h2>Card 2</h2>
+            <p>
+                This is the second card inside the same container.
+                It also uses <b>relative + absolute</b>.
+            </p>
+        </div>
+
+        <!-- Card 3 -->
+        <div class="card">
+            <span class="tag">Hot</span>
+            <h2>Card 3</h2>
+            <p>
+                This is the second card inside the same container.
+                It also uses <b>relative + absolute</b>.
+            </p>
+        </div>
+
+    </div>
+
+</body>
+</html>

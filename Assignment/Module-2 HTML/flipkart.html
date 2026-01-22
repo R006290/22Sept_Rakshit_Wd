@@ -1,0 +1,595 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Flipkart - Online Shopping Site</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background-color: #f1f3f6;
+        }
+
+        /* Header Styles */
+        .header {
+            background: linear-gradient(135deg, #2874f0 0%, #1e3a8a 100%);
+            color: white;
+            padding: 0.8rem 0;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        .header-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 2rem;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+
+        .search-container {
+            flex: 1;
+            max-width: 500px;
+            margin: 0 2rem;
+            position: relative;
+        }
+
+        .search-box {
+            width: 100%;
+            padding: 0.8rem 1rem;
+            border: none;
+            border-radius: 2px;
+            font-size: 1rem;
+            outline: none;
+        }
+
+        .search-btn {
+            position: absolute;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            width: 50px;
+            background: #ff9f00;
+            border: none;
+            border-radius: 0 2px 2px 0;
+            cursor: pointer;
+        }
+
+        .header-icons {
+            display: flex;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        .icon {
+            font-size: 1.4rem;
+            cursor: pointer;
+            position: relative;
+        }
+
+        .cart-count {
+            position: absolute;
+            top: -8px;
+            right: -8px;
+            background: #ff6161;
+            color: white;
+            border-radius: 50%;
+            width: 18px;
+            height: 18px;
+            font-size: 0.7rem;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        /* Navigation */
+        .nav {
+            background: white;
+            padding: 0.5rem 0;
+            box-shadow: 0 1px 5px rgba(0,0,0,0.1);
+        }
+
+        .nav-container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 2rem;
+            display: flex;
+            align-items: center;
+            gap: 2rem;
+        }
+
+        .nav-item {
+            padding: 0.5rem 1rem;
+            cursor: pointer;
+            border-radius: 2px;
+            transition: background 0.3s;
+        }
+
+        .nav-item:hover {
+            background: #f1f3f6;
+        }
+
+        /* Hero Banner */
+        .hero {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .hero-slider {
+            position: relative;
+            height: 300px;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+        }
+
+        .hero-slide {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            background-size: cover;
+            background-position: center;
+            transition: opacity 0.5s;
+        }
+
+        .hero-content {
+            position: absolute;
+            bottom: 30px;
+            left: 40px;
+            color: white;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.7);
+        }
+
+        .hero-title {
+            font-size: 2.2rem;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+        }
+
+        .hero-subtitle {
+            font-size: 1.2rem;
+            margin-bottom: 1rem;
+        }
+
+        .hero-btn {
+            background: #ff9f00;
+            color: white;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 4px;
+            font-size: 1rem;
+            cursor: pointer;
+            text-decoration: none;
+        }
+
+        /* Categories */
+        .categories {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .section-title {
+            font-size: 1.8rem;
+            margin-bottom: 1.5rem;
+            color: #212121;
+        }
+
+        .category-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(140px, 1fr));
+            gap: 1rem;
+            margin-bottom: 2rem;
+        }
+
+        .category-card {
+            background: white;
+            padding: 1.5rem;
+            text-align: center;
+            border-radius: 8px;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .category-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .category-icon {
+            font-size: 3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .category-name {
+            font-weight: 600;
+            color: #212121;
+        }
+
+        /* Products Grid */
+        .products {
+            max-width: 1200px;
+            margin: 2rem auto;
+            padding: 0 2rem;
+        }
+
+        .products-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+            gap: 1.5rem;
+        }
+
+        .product-card {
+            background: white;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.08);
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        .product-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 25px rgba(0,0,0,0.15);
+        }
+
+        .product-image {
+            width: 100%;
+            height: 200px;
+            background: linear-gradient(45deg, #f0f0f0, #e0e0e0);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 3rem;
+            color: #999;
+        }
+
+        .product-info {
+            padding: 1rem;
+        }
+
+        .product-brand {
+            color: #878787;
+            font-size: 0.9rem;
+        }
+
+        .product-name {
+            font-weight: 600;
+            margin: 0.3rem 0;
+            color: #212121;
+        }
+
+        .product-price {
+            font-size: 1.1rem;
+            font-weight: bold;
+            color: #212121;
+        }
+
+        .original-price {
+            text-decoration: line-through;
+            color: #878787;
+            font-size: 0.9rem;
+            margin-left: 0.5rem;
+        }
+
+        .discount {
+            color: #388e3c;
+            font-weight: 600;
+            font-size: 0.9rem;
+        }
+
+        /* Flash Sale Banner */
+        .flash-sale {
+            background: linear-gradient(135deg, #ff6b35 0%, #f7931e 100%);
+            color: white;
+            padding: 1.5rem;
+            margin: 2rem auto;
+            max-width: 1200px;
+            border-radius: 8px;
+            text-align: center;
+            box-shadow: 0 5px 20px rgba(255,107,53,0.3);
+        }
+
+        .flash-timer {
+            font-size: 1.2rem;
+            margin: 0.5rem 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-container {
+                flex-direction: column;
+                gap: 1rem;
+                padding: 1rem;
+            }
+
+            .search-container {
+                margin: 0;
+                order: 3;
+                width: 100%;
+            }
+
+            .nav-container {
+                flex-wrap: wrap;
+                padding: 0 1rem;
+                gap: 1rem;
+            }
+
+            .hero {
+                padding: 0 1rem;
+            }
+
+            .hero-slider {
+                height: 250px;
+            }
+
+            .hero-title {
+                font-size: 1.8rem;
+            }
+
+            .hero-subtitle {
+                font-size: 1rem;
+            }
+
+            .hero-content {
+                left: 20px;
+                bottom: 20px;
+            }
+
+            .categories, .products {
+                padding: 0 1rem;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(160px, 1fr));
+                gap: 1rem;
+            }
+
+            .section-title {
+                font-size: 1.5rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .header-container {
+                padding: 0.5rem;
+            }
+
+            .logo {
+                font-size: 1.4rem;
+            }
+
+            .nav-container {
+                justify-content: center;
+            }
+
+            .category-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .products-grid {
+                grid-template-columns: repeat(auto-fill, minmax(140px, 1fr));
+            }
+
+            .product-image {
+                height: 160px;
+            }
+        }
+
+        /* Animation for slider */
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateX(100%); }
+            to { opacity: 1; transform: translateX(0); }
+        }
+
+        .slide-active {
+            opacity: 1;
+            animation: slideIn 0.5s ease-out;
+        }
+    </style>
+</head>
+<body>
+    <!-- Header -->
+    <header class="header">
+        <div class="header-container">
+            <div class="logo">flipkart</div>
+            <div class="search-container">
+                <input type="text" class="search-box" placeholder="Search for products, brands and more">
+                <button class="search-btn">🔍</button>
+            </div>
+            <div class="header-icons">
+                <div class="icon">👤</div>
+                <div class="icon">❤️</div>
+                <div class="icon">
+                    🛒
+                    <span class="cart-count">3</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- Navigation -->
+    <nav class="nav">
+        <div class="nav-container">
+            <div class="nav-item">Electronics</div>
+            <div class="nav-item">Fashion</div>
+            <div class="nav-item">Home</div>
+            <div class="nav-item">Sports</div>
+            <div class="nav-item">Books</div>
+            <div class="nav-item">More</div>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-slider">
+            <div class="hero-slide slide-active" style="background-image: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.4))"></div>
+            <div class="hero-slide"></div>
+
+            <div class="hero-slide"></div>
+            
+            <div class="hero-content">
+                <div class="hero-title">iPhone 15 Pro Max</div>
+                <div class="hero-subtitle">Up to 40% off + Extra Bank Offers</div>
+                <a href="#" class="hero-btn">Shop Now</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Categories -->
+    <section class="categories">
+        <h2 class="section-title">Shop by Category</h2>
+        <div class="category-grid">
+            <div class="category-card">
+                <div class="category-icon">📱</div>
+                <div class="category-name">Mobiles</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👕</div>
+                <div class="category-name">Fashion</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💻</div>
+                <div class="category-name">Electronics</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🏠</div>
+                <div class="category-name">Home</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">👟</div>
+                <div class="category-name">Sports</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">📚</div>
+                <div class="category-name">Books</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">💄</div>
+                <div class="category-name">Beauty</div>
+            </div>
+            <div class="category-card">
+                <div class="category-icon">🚗</div>
+                <div class="category-name">Car & Bike</div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Flash Sale -->
+    <section class="flash-sale">
+        <h2>🔥 Flash Sale Live!</h2>
+        <div class="flash-timer">Ends in: 03:45:22</div>
+    </section>
+
+    <!-- Featured Products -->
+    <section class="products">
+        <h2 class="section-title">Featured Products</h2>
+        <div class="products-grid">
+            <div class="product-card">
+                <div class="product-image">📱</div>
+                <div class="product-info">
+                    <div class="product-brand">APPLE</div>
+                    <div class="product-name">iPhone 15 Pro Max 256GB</div>
+                    <div class="product-price">₹89,999 <span class="original-price">₹1,19,900</span></div>
+                    <div class="discount">25% off</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">💻</div>
+                <div class="product-info">
+                    <div class="product-brand">SAMSUNG</div>
+                    <div class="product-name">Galaxy Book4 Pro</div>
+                    <div class="product-price">₹1,04,999 <span class="original-price">₹1,39,999</span></div>
+                    <div class="discount">25% off</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👕</div>
+                <div class="product-info">
+                    <div class="product-brand">PUMA</div>
+                    <div class="product-name">T7 Shorts</div>
+                    <div class="product-price">₹999 <span class="original-price">₹1,999</span></div>
+                    <div class="discount">50% off</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">⌚</div>
+                <div class="product-info">
+                    <div class="product-brand">APPLE</div>
+                    <div class="product-name">Watch Series 9</div>
+                    <div class="product-price">₹38,999 <span class="original-price">₹44,900</span></div>
+                    <div class="discount">13% off</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">👗</div>
+                <div class="product-info">
+                    <div class="product-brand">LEVI'S</div>
+                    <div class="product-name">501 Original Jeans</div>
+                    <div class="product-price">₹2,499 <span class="original-price">₹3,499</span></div>
+                    <div class="discount">29% off</div>
+                </div>
+            </div>
+            <div class="product-card">
+                <div class="product-image">🎧</div>
+                <div class="product-info">
+                    <div class="product-brand">SONY</div>
+                    <div class="product-name">WH-1000XM5 Headphones</div>
+                    <div class="product-price">₹24,999 <span class="original-price">₹29,999</span></div>
+                    <div class="discount">17% off</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script>
+        // Simple slider functionality
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.hero-slide');
+        
+        function nextSlide() {
+            slides[currentSlide].classList.remove('slide-active');
+            currentSlide = (currentSlide + 1) % slides.length;
+            slides[currentSlide].classList.add('slide-active');
+        }
+        
+        setInterval(nextSlide, 5000);
+
+        // Flash sale timer
+        function updateTimer() {
+            const now = new Date();
+            const end = new Date(now.getTime() + 4 * 60 * 60 * 1000); // 4 hours from now
+            const diff = end - now;
+            
+            const hours = Math.floor(diff / (1000 * 60 * 60));
+            const minutes = Math.floor((diff % (1000 * 60 * 60)) / (1000 * 60));
+            const seconds = Math.floor((diff % (1000 * 60)) / 1000);
+            
+            document.querySelector('.flash-timer').textContent = 
+                `Ends in: ${hours.toString().padStart(2, '0')}:${minutes.toString().padStart(2, '0')}:${seconds.toString().padStart(2, '0')}`;
+        }
+        
+        setInterval(updateTimer, 1000);
+        updateTimer();
+    </script>
+</body>
+</html>

@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Switch Case Calculator</title>
+</head>
+
+<body style="background-color: rgb(0, 255, 68);">
+
+    <h1 style="text-align: center; color: blue;">Welcome to JavaScript</h1>
+    <hr>
+
+    <script>
+        let n = Number(prompt(
+            "Enter Choice:\n1. Division\n2. Multiplication\n3. Subtraction\n4. Addition"
+        ));
+
+        let a = 25;
+        let b = 32;
+        let result;
+
+        switch (n) {
+            case 1:
+                result = a / b;
+                alert("Division = " + result);
+                break;
+
+            case 2:
+                result = a * b;
+                alert("Multiplication = " + result);
+                break;
+
+            case 3:
+                result = a - b;
+                alert("Subtraction = " + result);
+                break;
+
+            case 4:
+                result = a + b;
+                alert("Addition = " + result);
+                break;
+
+            default:
+                alert("Invalid Choice");
+        }
+    </script>
+
+</body>
+
+</html>
