@@ -1,0 +1,52 @@
+1. Bootstrap Grid System vs Plain CSS ?
+Bootstrap uses a 12-column grid system to easily divide page layout.
+Provides predefined classes like col-md-6, col-lg-4 instead of writing CSS manually.
+Automatically handles spacing, alignment, and responsiveness.
+Reduces need for writing complex media queries.
+Faster development compared to plain CSS where layout must be built from scratch.
+
+
+2. Bootstrap Components (Navbar & Cards) ?
+Ready-made components like navbar, cards, buttons are pre-designed.
+No need to code UI from scratch → saves time.
+Ensures consistent design across the website.
+Built-in responsiveness and styling.
+Easily customizable using classes.
+
+
+3. Responsive Utility Classes & Breakpoints ?
+Bootstrap provides breakpoints (sm, md, lg, xl, xxl).
+Layout adjusts automatically based on screen size.
+Utility classes like:
+d-none d-md-block (hide/show elements)
+text-center text-lg-start
+Ensures website works on mobile, tablet, and desktop.
+Eliminates need for manual responsive CSS.
+
+
+4. Form Validation & User Trust ?
+Shows real-time feedback (valid/invalid input).
+Prevents submission of incorrect data.
+Improves user experience.
+Makes website look secure and professional.
+Builds trust because users know their data is handled properly.
+
+
+5. Utility Classes Reduce Repetitive CSS ?
+Bootstrap provides classes like:
+mt-3 (margin-top)
+p-2 (padding)
+text-center
+No need to write custom CSS repeatedly.
+Faster styling with single-line classes.
+Keeps code clean and maintainable.
+
+
+6. Converting Page to React or Angular ?
+Bootstrap can be used in React/Angular easily.
+HTML structure can be converted into components.
+Use libraries like:
+React-Bootstrap
+NG Bootstrap (Angular)
+Reusable components improve maintainability.
+Dynamic data can be added using state/props (React) or bindings (Angular).
