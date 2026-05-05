@@ -1,0 +1,928 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ProDigi - Professional Digital Solutions</title>
+    <!-- Bootstrap 5 CSS -->
+    <link href="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome for Icons -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary-color: #0d6efd;
+            --secondary-color: #6c757d;
+            --success-color: #198754;
+            --danger-color: #dc3545;
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* ===== STICKY NAVBAR ===== */
+        .navbar {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+            transition: all 0.3s ease;
+        }
+
+        .navbar-brand {
+            font-size: 1.8rem;
+            font-weight: 700;
+            color: white !important;
+            letter-spacing: 1px;
+        }
+
+        .navbar-brand i {
+            margin-right: 8px;
+        }
+
+        .nav-link {
+            color: rgba(255, 255, 255, 0.9) !important;
+            font-weight: 500;
+            margin: 0 10px;
+            transition: all 0.3s ease;
+            position: relative;
+        }
+
+        .nav-link:hover {
+            color: white !important;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: white;
+            transition: width 0.3s ease;
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .btn-nav {
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+            padding: 0.5rem 1.2rem;
+            border: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-nav:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+        }
+
+        /* ===== HERO SECTION ===== */
+        .hero {
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+            padding: 100px 20px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            right: -10%;
+            width: 500px;
+            height: 500px;
+            background: rgba(255, 255, 255, 0.05);
+            border-radius: 50%;
+            animation: float 6s ease-in-out infinite;
+        }
+
+        .hero::after {
+            content: '';
+            position: absolute;
+            bottom: -30%;
+            left: -5%;
+            width: 400px;
+            height: 400px;
+            background: rgba(255, 255, 255, 0.03);
+            border-radius: 50%;
+            animation: float 8s ease-in-out infinite reverse;
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0px); }
+            50% { transform: translateY(-30px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            animation: slideInUp 0.8s ease-out;
+        }
+
+        @keyframes slideInUp {
+            from {
+                opacity: 0;
+                transform: translateY(50px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .hero h1 {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 800;
+            margin-bottom: 20px;
+            text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.2);
+        }
+
+        .hero p {
+            font-size: clamp(1rem, 2vw, 1.3rem);
+            margin-bottom: 40px;
+            opacity: 0.95;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-buttons {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn-primary-hero {
+            background: white;
+            color: #667eea;
+            padding: 15px 40px;
+            border: none;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-primary-hero:hover {
+            background: #f0f0f0;
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .btn-secondary-hero {
+            background: transparent;
+            color: white;
+            padding: 15px 40px;
+            border: 2px solid white;
+            border-radius: 50px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary-hero:hover {
+            background: white;
+            color: #667eea;
+            transform: translateY(-3px);
+        }
+
+        /* ===== SERVICES SECTION ===== */
+        .services {
+            padding: 80px 20px;
+            background: #f8f9fa;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 0.8s ease-out;
+        }
+
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .section-header h2 {
+            font-size: clamp(2rem, 4vw, 2.8rem);
+            font-weight: 800;
+            color: #333;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .section-header h2::after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 4px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            border-radius: 2px;
+        }
+
+        .section-header p {
+            font-size: 1.1rem;
+            color: #666;
+            margin-top: 30px;
+            max-width: 500px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .service-card {
+            background: white;
+            padding: 40px 25px;
+            border-radius: 15px;
+            text-align: center;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            height: 100%;
+            border: 1px solid transparent;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(102, 126, 234, 0.2);
+            border-color: #667eea;
+        }
+
+        .service-icon {
+            font-size: 3.5rem;
+            color: #667eea;
+            margin-bottom: 20px;
+            transition: all 0.3s ease;
+        }
+
+        .service-card:hover .service-icon {
+            color: #764ba2;
+            transform: scale(1.1) rotateZ(-5deg);
+        }
+
+        .service-card h3 {
+            font-size: 1.5rem;
+            font-weight: 700;
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        .service-card p {
+            color: #666;
+            font-size: 0.95rem;
+            line-height: 1.8;
+        }
+
+        /* ===== CONTACT FORM SECTION ===== */
+        .contact {
+            padding: 80px 20px;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            color: white;
+        }
+
+        .contact .section-header h2,
+        .contact .section-header p {
+            color: white;
+        }
+
+        .contact .section-header h2::after {
+            background: rgba(255, 255, 255, 0.5);
+        }
+
+        .form-container {
+            max-width: 600px;
+            margin: 0 auto;
+            background: rgba(255, 255, 255, 0.1);
+            padding: 40px;
+            border-radius: 15px;
+            backdrop-filter: blur(10px);
+            border: 1px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: 600;
+            font-size: 0.95rem;
+            color: white;
+        }
+
+        .form-control {
+            background: rgba(255, 255, 255, 0.95);
+            border: 2px solid transparent;
+            border-radius: 8px;
+            padding: 12px 15px;
+            font-size: 1rem;
+            color: #333;
+            transition: all 0.3s ease;
+        }
+
+        .form-control:focus {
+            background: white;
+            border-color: white;
+            outline: none;
+            box-shadow: 0 0 0 0 transparent;
+        }
+
+        .form-control::placeholder {
+            color: #999;
+        }
+
+        textarea.form-control {
+            resize: vertical;
+            min-height: 120px;
+            font-family: inherit;
+        }
+
+        .form-check {
+            margin: 20px 0;
+            padding-left: 0;
+        }
+
+        .form-check-input {
+            width: 20px;
+            height: 20px;
+            margin-top: 2px;
+            cursor: pointer;
+            accent-color: white;
+        }
+
+        .form-check-label {
+            margin-left: 10px;
+            cursor: pointer;
+            font-weight: 500;
+            color: rgba(255, 255, 255, 0.9);
+        }
+
+        .btn-submit {
+            width: 100%;
+            padding: 15px;
+            background: white;
+            color: #667eea;
+            border: none;
+            border-radius: 8px;
+            font-weight: 700;
+            font-size: 1.1rem;
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .btn-submit:hover {
+            background: #f0f0f0;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.2);
+        }
+
+        .btn-submit:active {
+            transform: translateY(0);
+        }
+
+        .form-feedback {
+            margin-top: 10px;
+            padding: 10px 15px;
+            border-radius: 8px;
+            display: none;
+            animation: slideIn 0.3s ease-out;
+        }
+
+        @keyframes slideIn {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .feedback-success {
+            background: rgba(25, 135, 84, 0.2);
+            color: white;
+            border-left: 4px solid white;
+        }
+
+        .feedback-error {
+            background: rgba(220, 53, 69, 0.2);
+            color: #ffcccc;
+            border-left: 4px solid #ffcccc;
+        }
+
+        /* ===== FOOTER ===== */
+        footer {
+            background: #2c2c2c;
+            color: white;
+            padding: 30px 20px;
+            text-align: center;
+        }
+
+        /* ===== RESPONSIVE DESIGN ===== */
+        /* Mobile (< 576px) */
+        @media (max-width: 575.98px) {
+            .navbar-toggler {
+                border-color: rgba(255, 255, 255, 0.5);
+            }
+
+            .navbar-toggler-icon {
+                background-image: url("data:image/svg+xml,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 30 30'%3e%3cpath stroke='rgba%28255, 255, 255, 0.8%29' stroke-linecap='round' stroke-miterlimit='10' stroke-width='2' d='M4 7h22M4 15h22M4 23h22'/%3e%3c/svg%3e");
+            }
+
+            .hero {
+                padding: 60px 20px;
+            }
+
+            .hero h1 {
+                margin-bottom: 15px;
+            }
+
+            .hero-buttons {
+                gap: 12px;
+            }
+
+            .btn-primary-hero,
+            .btn-secondary-hero {
+                padding: 12px 25px;
+                font-size: 0.95rem;
+            }
+
+            .services,
+            .contact {
+                padding: 50px 15px;
+            }
+
+            .service-card {
+                padding: 25px 15px;
+                margin-bottom: 20px;
+            }
+
+            .form-container {
+                padding: 25px;
+            }
+
+            .section-header h2 {
+                margin-bottom: 10px;
+            }
+
+            .section-header p {
+                margin-top: 20px;
+            }
+        }
+
+        /* Tablet (576px - 768px) */
+        @media (min-width: 576px) and (max-width: 767.98px) {
+            .hero {
+                padding: 80px 30px;
+            }
+
+            .hero-buttons {
+                gap: 15px;
+            }
+
+            .btn-primary-hero,
+            .btn-secondary-hero {
+                padding: 13px 30px;
+                font-size: 0.98rem;
+            }
+
+            .services,
+            .contact {
+                padding: 60px 25px;
+            }
+
+            .service-card {
+                padding: 30px 20px;
+            }
+
+            .form-container {
+                padding: 30px;
+            }
+        }
+
+        /* Tablet-Large (768px - 1024px) */
+        @media (min-width: 768px) and (max-width: 1023.98px) {
+            .nav-link {
+                margin: 0 8px;
+                font-size: 0.95rem;
+            }
+
+            .hero {
+                padding: 90px 40px;
+            }
+
+            .services,
+            .contact {
+                padding: 70px 30px;
+            }
+        }
+
+        /* Desktop (1024px+) */
+        @media (min-width: 1024px) {
+            .container {
+                max-width: 1200px;
+            }
+
+            .nav-link {
+                margin: 0 15px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- ===== STICKY NAVBAR ===== -->
+    <nav class="navbar navbar-expand-lg navbar-dark">
+        <div class="container-fluid">
+            <a class="navbar-brand" href="#home">
+                <i class="fas fa-rocket"></i>ProDigi
+            </a>
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                <span class="navbar-toggler-icon"></span>
+            </button>
+            <div class="collapse navbar-collapse" id="navbarNav">
+                <ul class="navbar-nav ms-auto">
+                    <li class="nav-item">
+                        <a class="nav-link" href="#home">Home</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#services">Services</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#contact">Contact</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="#about">About</a>
+                    </li>
+                    <li class="nav-item">
+                        <button class="btn-nav">Get Started</button>
+                    </li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+
+    <!-- ===== HERO SECTION ===== -->
+    <section class="hero" id="home">
+        <div class="hero-content">
+            <h1>Welcome to ProDigi Solutions</h1>
+            <p>Transform Your Ideas Into Reality With Cutting-Edge Technology and Professional Design</p>
+            <div class="hero-buttons">
+                <button class="btn-primary-hero">
+                    <i class="fas fa-play-circle"></i> Get Started Now
+                </button>
+                <button class="btn-secondary-hero">
+                    <i class="fas fa-info-circle"></i> Learn More
+                </button>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== SERVICES SECTION ===== -->
+    <section class="services" id="services">
+        <div class="container">
+            <div class="section-header">
+                <h2>Our Premium Services</h2>
+                <p>Explore Our Comprehensive Range of Digital Solutions Designed to Elevate Your Business</p>
+            </div>
+
+            <div class="row g-4">
+                <!-- Service Card 1 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <i class="fas fa-code service-icon"></i>
+                        <h3>Web Development</h3>
+                        <p>Custom, responsive websites and web applications built with the latest technologies to meet your unique business needs.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 2 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <i class="fas fa-palette service-icon"></i>
+                        <h3>UI/UX Design</h3>
+                        <p>Beautiful and intuitive user interfaces designed to provide exceptional user experiences and drive engagement.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 3 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <i class="fas fa-mobile-alt service-icon"></i>
+                        <h3>Mobile Apps</h3>
+                        <p>Native and cross-platform mobile applications that deliver seamless performance on iOS and Android devices.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 4 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <i class="fas fa-chart-line service-icon"></i>
+                        <h3>Digital Marketing</h3>
+                        <p>Strategic marketing campaigns that increase visibility, drive traffic, and boost conversions for your brand.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 5 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <i class="fas fa-database service-icon"></i>
+                        <h3>Backend Solutions</h3>
+                        <p>Robust server-side infrastructure and database solutions designed for scalability and optimal performance.</p>
+                    </div>
+                </div>
+
+                <!-- Service Card 6 -->
+                <div class="col-12 col-md-6 col-lg-4">
+                    <div class="service-card">
+                        <i class="fas fa-headset service-icon"></i>
+                        <h3>24/7 Support</h3>
+                        <p>Dedicated technical support and maintenance services to ensure your digital solutions run smoothly.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== CONTACT FORM SECTION ===== -->
+    <section class="contact" id="contact">
+        <div class="container">
+            <div class="section-header">
+                <h2>Get In Touch</h2>
+                <p>Have a Project in Mind? Let's Discuss Your Ideas and Bring Them to Life</p>
+            </div>
+
+            <div class="form-container">
+                <form id="contactForm" novalidate>
+                    <!-- Name Field -->
+                    <div class="form-group">
+                        <label for="name">Full Name *</label>
+                        <input type="text" class="form-control" id="name" placeholder="John Doe" required>
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <!-- Email Field -->
+                    <div class="form-group">
+                        <label for="email">Email Address *</label>
+                        <input type="email" class="form-control" id="email" placeholder="john@example.com" required>
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <!-- Phone Field -->
+                    <div class="form-group">
+                        <label for="phone">Phone Number</label>
+                        <input type="tel" class="form-control" id="phone" placeholder="+1 (555) 000-0000">
+                    </div>
+
+                    <!-- Subject Field -->
+                    <div class="form-group">
+                        <label for="subject">Subject *</label>
+                        <input type="text" class="form-control" id="subject" placeholder="Project Inquiry" required>
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <!-- Message Field -->
+                    <div class="form-group">
+                        <label for="message">Message *</label>
+                        <textarea class="form-control" id="message" placeholder="Tell us about your project..." required></textarea>
+                        <small class="text-danger"></small>
+                    </div>
+
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" id="terms" required>
+                        <label class="form-check-label" for="terms">
+                            I Agree to the Terms and Conditions
+                        </label>
+                        <small class="text-danger d-block"></small>
+                    </div>
+
+                    <!-- Feedback Message -->
+                    <div id="formFeedback" class="form-feedback"></div>
+
+                    <!-- Submit Button -->
+                    <button type="submit" class="btn-submit">
+                        <i class="fas fa-paper-plane"></i> Send Message
+                    </button>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- ===== FOOTER ===== -->
+    <footer>
+        <div class="container">
+            <p>&copy; 2026 ProDigi Solutions. All Rights Reserved. | Built with <i class="fas fa-heart" style="color: #dc3545;"></i> for Excellence</p>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/bootstrap/5.3.0/js/bootstrap.bundle.min.js"></script>
+
+    <!-- Form Validation Script -->
+    <script>
+        // Form Validation
+        const form = document.getElementById('contactForm');
+        const feedback = document.getElementById('formFeedback');
+
+        form.addEventListener('submit', function(e) {
+            e.preventDefault();
+
+            // Reset feedback
+            feedback.style.display = 'none';
+            feedback.className = 'form-feedback';
+
+            // Get form fields
+            const name = document.getElementById('name');
+            const email = document.getElementById('email');
+            const subject = document.getElementById('subject');
+            const message = document.getElementById('message');
+            const terms = document.getElementById('terms');
+
+            // Validation flags
+            let isValid = true;
+
+            // Validate Name
+            if (name.value.trim() === '') {
+                showError(name, 'Name is required');
+                isValid = false;
+            } else if (name.value.trim().length < 3) {
+                showError(name, 'Name must be at least 3 characters');
+                isValid = false;
+            } else {
+                clearError(name);
+            }
+
+            // Validate Email
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (email.value.trim() === '') {
+                showError(email, 'Email is required');
+                isValid = false;
+            } else if (!emailRegex.test(email.value)) {
+                showError(email, 'Please enter a valid email');
+                isValid = false;
+            } else {
+                clearError(email);
+            }
+
+            // Validate Subject
+            if (subject.value.trim() === '') {
+                showError(subject, 'Subject is required');
+                isValid = false;
+            } else if (subject.value.trim().length < 5) {
+                showError(subject, 'Subject must be at least 5 characters');
+                isValid = false;
+            } else {
+                clearError(subject);
+            }
+
+            // Validate Message
+            if (message.value.trim() === '') {
+                showError(message, 'Message is required');
+                isValid = false;
+            } else if (message.value.trim().length < 10) {
+                showError(message, 'Message must be at least 10 characters');
+                isValid = false;
+            } else {
+                clearError(message);
+            }
+
+            // Validate Terms Checkbox
+            if (!terms.checked) {
+                const termsError = terms.parentElement.querySelector('small');
+                termsError.textContent = 'You must agree to the terms';
+                termsError.style.display = 'block';
+                isValid = false;
+            } else {
+                const termsError = terms.parentElement.querySelector('small');
+                termsError.textContent = '';
+                termsError.style.display = 'none';
+            }
+
+            // If valid, show success message
+            if (isValid) {
+                feedback.textContent = '✓ Your message has been sent successfully! We\'ll get back to you soon.';
+                feedback.className = 'form-feedback feedback-success';
+                feedback.style.display = 'block';
+
+                // Reset form
+                form.reset();
+
+                // Hide feedback after 5 seconds
+                setTimeout(() => {
+                    feedback.style.display = 'none';
+                }, 5000);
+            }
+        });
+
+        // Helper function to show error
+        function showError(field, message) {
+            field.style.borderColor = '#dc3545';
+            field.style.background = 'rgba(220, 53, 69, 0.1)';
+            const errorElement = field.parentElement.querySelector('small');
+            if (errorElement) {
+                errorElement.textContent = message;
+                errorElement.style.display = 'block';
+            }
+        }
+
+        // Helper function to clear error
+        function clearError(field) {
+            field.style.borderColor = 'transparent';
+            field.style.background = 'rgba(255, 255, 255, 0.95)';
+            const errorElement = field.parentElement.querySelector('small');
+            if (errorElement) {
+                errorElement.textContent = '';
+                errorElement.style.display = 'none';
+            }
+        }
+
+        // Real-time validation on input
+        document.getElementById('name').addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                showError(this, 'Name is required');
+            } else if (this.value.trim().length < 3) {
+                showError(this, 'Name must be at least 3 characters');
+            } else {
+                clearError(this);
+            }
+        });
+
+        document.getElementById('email').addEventListener('blur', function() {
+            const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            if (this.value.trim() === '') {
+                showError(this, 'Email is required');
+            } else if (!emailRegex.test(this.value)) {
+                showError(this, 'Please enter a valid email');
+            } else {
+                clearError(this);
+            }
+        });
+
+        document.getElementById('subject').addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                showError(this, 'Subject is required');
+            } else if (this.value.trim().length < 5) {
+                showError(this, 'Subject must be at least 5 characters');
+            } else {
+                clearError(this);
+            }
+        });
+
+        document.getElementById('message').addEventListener('blur', function() {
+            if (this.value.trim() === '') {
+                showError(this, 'Message is required');
+            } else if (this.value.trim().length < 10) {
+                showError(this, 'Message must be at least 10 characters');
+            } else {
+                clearError(this);
+            }
+        });
+
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#') {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        target.scrollIntoView({ behavior: 'smooth' });
+                    }
+                }
+            });
+        });
+    </script>
+</body>
+</html>
