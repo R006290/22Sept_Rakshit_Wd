@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>External CSS Styling</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="page-wrapper">
+    <header>
+      <h1>Semantic Layout with External CSS</h1>
+      <p>Using classes and a separate stylesheet to style layout elements and buttons without inline styles.</p>
+    </header>
+
+    <nav>
+      <ul>
+        <li><a href="#features">Features</a></li>
+        <li><a href="#actions">Actions</a></li>
+        <li><a href="#footer">Footer</a></li>
+      </ul>
+    </nav>
+
+    <main class="section-grid">
+      <section id="features" class="card">
+        <h2>Page Features</h2>
+        <p>This page uses external CSS classes for layout, typography, and button styling. No inline styles are used anywhere in the HTML.</p>
+      </section>
+
+      <section id="actions" class="card">
+        <h2>Action Buttons</h2>
+        <div class="actions">
+          <button class="btn btn-primary" type="button">Primary Action</button>
+          <button class="btn btn-secondary" type="button">Secondary Action</button>
+        </div>
+      </section>
+    </main>
+
+    <footer id="footer">
+      <p>&copy; 2026 Semantic Design. Styled with an external CSS stylesheet.</p>
+    </footer>
+  </div>
+</body>
+</html>

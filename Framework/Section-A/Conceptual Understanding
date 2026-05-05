@@ -1,0 +1,172 @@
+1. From Instagram Bio Link → Rendered Website (How browser works)?
+
+When a creator clicks your bio link:
+
+Step-by-step flow:
+
+URL Request
+The browser sends a request to a server using the URL (via HTTP/HTTPS).
+DNS Lookup
+Converts domain (e.g., mywebsite.com) → IP address.
+Server Response
+Server returns files (mainly HTML, plus CSS, JS, images).
+HTML Parsing (Structure)
+Browser reads HTML and builds the DOM (Document Object Model).
+This defines structure like headings, buttons, sections.
+CSS Parsing (Design)
+CSS is applied to style the HTML (colors, layout, fonts).
+Browser builds CSSOM (CSS Object Model).
+Render Tree + Layout
+Combines DOM + CSSOM → creates visual layout.
+Painting
+Finally displays the styled page on screen.
+
+👉 Role of HTML & CSS:
+
+HTML → Structure (what content exists)
+CSS → Presentation (how it looks)
+
+
+2. Professional Look Across Devices (Responsive Design)?
+
+To ensure your site looks good on mobile, tablet, and desktop:
+
+Semantic HTML
+Uses meaningful tags:
+<header>, <nav>, <section>, <footer>
+Helps:
+SEO
+Accessibility
+Cleaner structure
+Responsive CSS
+Uses flexible units:
+%, vw, vh, rem
+Uses layouts:
+Flexbox / Grid
+Media Queries
+Adjust styles based on screen size:
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column;
+  }
+}
+
+👉 Together they:
+
+Adapt layout
+Resize text/images
+Maintain usability
+
+
+3. Importance of Accessibility (Even for Small Sites)?
+
+Accessibility ensures everyone can use your website, including:
+
+Visually impaired users
+Screen reader users
+Keyboard-only users
+Key Features:
+
+Alt Text
+
+<img src="profile.jpg" alt="Creator profile photo">
+
+→ Helps screen readers describe images
+
+Proper Headings
+
+<h1>Main Title</h1>
+<h2>Section</h2>
+
+→ Improves navigation & SEO
+
+Why it matters:
+Better user experience
+Improves Google ranking
+Makes site inclusive and professional
+
+
+4. Version Control for Safe Updates (Git)?
+
+When your site is updated:
+
+Without Version Control:
+Risk of breaking site
+No way to undo changes
+With Version Control (Git):
+
+Benefits:
+
+Track every change
+Restore older versions (rollback)
+Work safely in branches
+Collaborate easily
+Example Workflow:
+Make changes in a branch
+Test locally
+Merge to main
+Deploy
+
+👉 If something breaks:
+
+Revert to previous version instantly
+
+
+5. Why Separate HTML (Structure) & CSS (Styling)?
+Without Separation:
+Messy code
+Hard to update
+Repetition everywhere
+With Separation:
+
+HTML
+
+<h1 class="title">Welcome</h1>
+
+CSS
+
+.title {
+  color: blue;
+}
+Benefits:
+Easier maintenance
+Reusable styles
+Faster updates
+Cleaner codebase
+
+
+6. From Static Site → Dynamic React App?
+
+Your static site can evolve like this:
+
+Current (Static Site):
+Fixed HTML pages
+No interactivity (or minimal JS)
+Upgrade to React:
+
+What changes:
+
+UI becomes component-based
+Uses JavaScript to render UI dynamically
+Example:
+
+Before (HTML):
+
+<h1>Welcome</h1>
+
+After (React):
+
+function App() {
+  return <h1>Welcome</h1>;
+}
+
+Benefits of React:
+Reusable components
+Faster UI updates (Virtual DOM)
+Better user experience
+Easy integration with APIs (dynamic data)
+
+Future Enhancements:
+Login system
+Real-time updates
+Backend integration (Node.js, Firebase)
